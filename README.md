@@ -37,6 +37,8 @@ Oracle wallet is a directory with two files:
 * cwallet.sso
 
 ewallet.p12 is the actual key store in PKCS12 format, cwallet.sso looks like a SSO key...
+We know the driver is able to load it to access password, so we just use the same API `OracleSSOKeyStoreSpi.engineLoad`
+to load the source wallet, then iterate over entries to create a new wallet.
 
 ## Recover wallet password
 Use the recoverwallet.jar to create a new wallet with a new password and old wallet content:
