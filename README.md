@@ -39,7 +39,15 @@ ewallet.p12 is the actual key store in PKCS12 format, cwallet.sso looks like a S
 ## Recover wallet password
 Use the recoverwallet.jar to create a new wallet with a new password and old wallet content:
 
-`java -classpath recoverwallet.jar path/to/sourcewallet path/to/targetwallet [newPassword]`
+`java -jar recoverwallet.jar path/to/sourcewallet path/to/targetwallet [newPassword]`
+
+If the wallet was created with orapki auto_login_local option, you may get an LSSO wallet error message.
+In this case, just override current hostname and username to match original wallet location:
+
+```
+hostname walletserver
+java -Duser.name=walletuser -jar recoverwallet.jar path/to/sourcewallet path/to/targetwallet [newPassword]
+```
 
 
 ## Workaround

@@ -1,8 +1,11 @@
+import oracle.security.crypto.asn1.ASN1FormatException;
 import oracle.security.pki.OracleSSOKeyStoreSpi;
 import oracle.security.pki.OracleSecretStore;
 import oracle.security.pki.OracleWallet;
 
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.InetAddress;
 
 /**
  * Recover wallet by creating a new one with a known password.
@@ -10,7 +13,7 @@ import java.io.FileInputStream;
 public class RecoverWallet {
     public static void main(String[] argv) {
         if (argv.length < 2) {
-            System.out.println("Usage: java -classpath recoverwallet.jar path/to/sourcewallet path/to/targetwallet [newPassword]");
+            System.out.println("Usage: java -jar recoverwallet.jar path/to/sourcewallet path/to/targetwallet [newPassword]");
         } else {
             try {
                 OracleWallet targetOracleWallet = new OracleWallet();
@@ -28,7 +31,14 @@ public class RecoverWallet {
                     System.out.println("Wallet " + targetPath + " already exists");
                 } else {
                     OracleSSOKeyStoreSpi secretKeyStore = new OracleSSOKeyStoreSpi();
-                    secretKeyStore.engineLoad(new FileInputStream(sourcePath + "/cwallet.sso"), null);
+                    try {
+                        secretKeyStore.engineLoad(new FileInputStream(sourcePath + "/cwallet.sso"), null);
+                    } catch (ASN1FormatException e) {
+                        System.out.println("Unable to load wallet, this is an LSSO wallet");
+                        System.out.println("Please make sure hostname and username match original wallet location");
+                        System.out.println("Current hostname "+ InetAddress.getLocalHost().getHostName()+" current username "+System.getProperty("user.name"));
+                        throw new IOException("Unable to load wallet, this is an LSSO wallet");
+                    }
                     targetOracleWallet.saveAs(targetPath);
                     targetOracleWallet.saveSSO();
 
@@ -40,6 +50,7 @@ public class RecoverWallet {
                         targetOracleWallet.save();
                     }
                 }
+
             } catch (Exception e) {
                 System.out.println("Exception: " + e + " " + e.getMessage());
             }
