@@ -20,8 +20,10 @@ Mkstore command is used to create a new wallet and add credentials:
 
 Note that for each calls above you must provide the wallet password:
 
-`Enter wallet password:
- oracle.security.client.password1 = myv3rys3cre3tp@ss`
+```
+Enter wallet password:
+ oracle.security.client.password1 = myv3rys3cre3tp@ss
+```
  
 ## Issue
 Everything is fine, you no longer have clear text passwords in your script files and application server datasources...
