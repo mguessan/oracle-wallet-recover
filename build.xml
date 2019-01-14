@@ -1,0 +1,51 @@
+<project name="RecoverWallet" default="dist" basedir=".">
+
+
+    <tstamp>
+        <format property="TODAY" pattern="yyyy-MM-dd-HHmm"/>
+    </tstamp>
+
+    <path id="classpath">
+        <fileset dir="lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="dist"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <!-- compile classes -->
+        <mkdir dir="dist/classes"/>
+        <javac srcdir="src/java" destdir="dist/classes" source="1.8" target="1.8"
+               encoding="UTF-8" debug="false" optimize="true" nowarn="false">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <unjar src="lib/oraclepki.jar" dest="dist/classes"/>
+        <unjar src="lib/osdt_core.jar" dest="dist/classes"/>
+        <unjar src="lib/osdt_cert.jar" dest="dist/classes"/>
+        <jar file="dist/recoverwallet.jar">
+            <fileset dir="dist/classes">
+                <include name="**"/>
+            </fileset>
+            <manifest>
+                <attribute name="Main-Class" value="RecoverWallet"/>
+                <section name="common">
+                    <attribute name="Implementation-Title" value="Oracle Wallet Revover"/>
+                    <attribute name="Implementation-Version" value="${TODAY}"/>
+                </section>
+            </manifest>
+        </jar>
+    </target>
+
+
+    <target name="dist" description="Create distribution package" depends="jar">
+    </target>
+
+</project>
