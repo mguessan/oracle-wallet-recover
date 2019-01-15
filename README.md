@@ -1,5 +1,5 @@
 # oracle-wallet-recover
-Recover passwords from an Oracle wallet.
+Demonstrates how to recover passwords from an Oracle auto login wallet (Secure External Password Store) without wallet password, which means there is no difference between clear text passwords and a wallet.
 
 ## Description
 Oracle wallet is designed to securely store credentials to access an Oracle database and avoid clear text passwords.
