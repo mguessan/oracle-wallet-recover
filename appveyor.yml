@@ -7,6 +7,6 @@ environment:
 
 install:
   - cmd: java -version
-  - mvn compile
+  - mvn clean compile assembly:single install --settings mvnsettings.xml
 test: off
 artifacts:
