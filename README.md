@@ -87,7 +87,9 @@ Copy jars from official driver package to lib directory.
 
 http://oracle-base.com/articles/10g/secure-external-password-store-10gr2.php
 
-    
+* Another more complex approach to retrieve wallet content
+
+https://wiki.loopback.org/display/KB/How+to+crack+Oracle+Wallets
     
     
     
