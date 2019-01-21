@@ -1,4 +1,5 @@
 [![Build Status: Linux](https://travis-ci.org/mguessan/oracle-wallet-recover.svg?branch=master)](https://travis-ci.org/mguessan/oracle-wallet-recover)
+[![Build status: Windows](https://ci.appveyor.com/api/projects/status/uuvayjefe931ejpp?svg=true)](https://ci.appveyor.com/project/mguessan/oracle-wallet-recover)
 
 # oracle-wallet-recover
 Demonstrates how to recover passwords from an Oracle auto login wallet (Secure External Password Store) without wallet password, which means there is no difference between clear text passwords and a wallet.
