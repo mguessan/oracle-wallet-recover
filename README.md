@@ -66,10 +66,25 @@ However, this means you need to provide the wallet password each time you want t
 which pretty much defeats the initial requirement of scripts and servers: run unattended.
 
 ## Build
-In order to build this project, you need the Oracle driver, get it from:
+### Ant build
+In order to build this project, you need Java, Ant and the Oracle driver, get it from:
 https://www.oracle.com/database/technologies/appdev/jdbc.html
 
-Copy jars from official driver package to lib directory. 
+Copy jars from official driver package to lib directory.
+
+Build with:
+```
+ant
+```
+
+### Appveyor build
+You can also grab latest build from Appveyor: [oracle-wallet-recover-1.0.jar](https://ci.appveyor.com/api/projects/mguessan/oracle-wallet-recover/artifacts/target%2Foracle-wallet-recover-1.0.jar?job=Environment%3A%20JAVA_HOME%3DC%3A%5CProgram%20Files%5CJava%5Cjdk1.8.0).
+It does not include Oracle libraries so you still need to get latest Oracle driver, then just the following command instead of java -jar recoverwallet.jar:
+
+```
+java -classpath lib/*:oracle-wallet-recover-1.0.jar RecoverWallet path/to/sourcewallet path/to/targetwallet [newPassword]
+```
+ 
 
 ## Manage wallet without mkstore scripts
 * Create wallet:
