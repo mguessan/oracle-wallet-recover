@@ -6,7 +6,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - mvn clean install --settings mvnsettings.xml
+  - mvn clean compile assembly:single install --settings mvnsettings.xml
 
 cache:
   directories:
