@@ -2,8 +2,8 @@
     <servers>
         <server>
             <id>maven.oracle.com</id>
-            <username>${OTN_USERNAME}</username>
-            <password>${OTN_PASSWORD}</password>
+            <username>${env.OTN_USERNAME}</username>
+            <password>${env.OTN_PASSWORD}</password>
             <configuration>
                 <basicAuthScope>
                     <host>ANY</host>
