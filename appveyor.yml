@@ -8,8 +8,9 @@ environment:
 install:
   - cmd: java -version
 build_script:
-  - cmd: mvn clean compile package install --settings mvnsettings.xml -DOTN_USERNAME=%OTN_USERNAME% -DOTN_PASSWORD=%OTN_PASSWORD%
+  - cmd: mvn package --settings mvnsettings.xml -DOTN_USERNAME=%OTN_USERNAME% -DOTN_PASSWORD=%OTN_PASSWORD%
 test: off
 cache:
   - C:\Users\appveyor\.m2
 artifacts:
+  - path: target/*.jar
