@@ -13,7 +13,7 @@ Mkstore command is used to create a new wallet and add credentials:
 `mkstore -wrl mywallet -create`
 
 - Add database credentials to the wallet:
-`mkstore -wrl mywallet -createCredential oracleserver:1521 dbuser myv3rys3cre3tp@ss`
+`mkstore -wrl mywallet -createCredential oracleserver:1521 dbuser myv3rys3cr3tp@ss`
 
 - List stored credentials:
 `mkstore -wrl mywallet -list`
@@ -25,7 +25,7 @@ Note that for each calls above you must provide the wallet password:
 
 ```
 Enter wallet password:
- oracle.security.client.password1 = myv3rys3cre3tp@ss
+ oracle.security.client.password1 = myv3rys3cr3tp@ss
 ```
  
 ## Issue
@@ -72,7 +72,7 @@ Example test case run:
 ```
 * Clear wallet if exists
 * Create a new wallet with one credential entry
-java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl mywallet -create -createCredential oracleserver:1521 dbuser myv3rys3cre3tp@ss
+java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl mywallet -create -createCredential oracleserver:1521 dbuser myv3rys3cr3tp@ss
 Oracle Secret Store Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 
@@ -84,11 +84,11 @@ java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl mywallet 
 Oracle Secret Store Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 
-oracle.security.client.password1 = myv3rys3cre3tp@ss
+oracle.security.client.password1 = myv3rys3cr3tp@ss
 
 * Recover wallet without original wallet password and display entries with clear text passwords
 java -classpath lib/*:oracle-wallet-recover-1.0.jar RecoverWallet mywallet recoveredwallet N3wP@ssw0rd
-oracleserver:1521 dbuser myv3rys3cre3tp@ss
+oracleserver:1521 dbuser myv3rys3cr3tp@ss
 ```
 
 ## Build

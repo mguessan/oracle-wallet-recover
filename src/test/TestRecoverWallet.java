@@ -41,7 +41,7 @@ public class TestRecoverWallet extends TestCase {
         String walletName = "mywallet";
         String dbInfo = "oracleserver:1521";
         String dbUser = "dbuser";
-        String dbPassword = "myv3rys3cre3tp@ss";
+        String dbPassword = "myv3rys3cr3tp@ss";
         String walletPassword = "walletP@ssw3rd";
 
         String recoveredWalletName = "recoveredwallet";
