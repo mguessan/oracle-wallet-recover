@@ -52,7 +52,7 @@ public class TestRecoverWallet extends TestCase {
         deleteWallet(recoveredWalletName);
 
         System.out.println("* Create a new wallet with one credential entry");
-        System.out.println("java -classpath lib/* OracleSecretStoreTextUI -wrl "+walletName+" -create -createCredential "+dbInfo+" "+dbUser+" "+dbPassword);
+        System.out.println("java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl "+walletName+" -create -createCredential "+dbInfo+" "+dbUser+" "+dbPassword);
 
         //-wrl mywallet -create -createCredential key username password
         System.setIn(new ByteArrayInputStream((walletPassword + "\n" + walletPassword + "\n").getBytes()));
@@ -64,7 +64,7 @@ public class TestRecoverWallet extends TestCase {
         System.out.println();
 
         System.out.println("* Read password from wallet with wallet password");
-        System.out.println("java -classpath lib/* OracleSecretStoreTextUI -wrl "+walletName+" -viewEntry oracle.security.client.password1");
+        System.out.println("java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl "+walletName+" -viewEntry oracle.security.client.password1");
         System.setIn(new ByteArrayInputStream((walletPassword + "\n").getBytes()));
         try {
             OracleSecretStoreTextUI.main(new String[]{"-wrl", walletName, "-viewEntry", "oracle.security.client.password1"});

@@ -72,7 +72,7 @@ Example test case run:
 ```
 * Clear wallet if exists
 * Create a new wallet with one credential entry
-java -classpath lib/* OracleSecretStoreTextUI -wrl mywallet -create -createCredential oracleserver:1521 dbuser myv3rys3cre3tp@ss
+java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl mywallet -create -createCredential oracleserver:1521 dbuser myv3rys3cre3tp@ss
 Oracle Secret Store Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 
@@ -80,7 +80,7 @@ Enter password:
 Enter password again:   
 
 * Read password from wallet with wallet password
-java -classpath lib/* OracleSecretStoreTextUI -wrl mywallet -viewEntry oracle.security.client.password1
+java -classpath lib/* oracle.security.pki.OracleSecretStoreTextUI -wrl mywallet -viewEntry oracle.security.client.password1
 Oracle Secret Store Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 
