@@ -6,13 +6,16 @@ import java.io.File;
 import java.security.Permission;
 
 public class TestRecoverWallet extends TestCase {
-    public void deleteWallet(String path) {
+    private void deleteWallet(String path) {
         File walletDir = new File(path);
         if (walletDir.exists()) {
             String[] files = walletDir.list();
             if (files != null) {
                 for (String file : files) {
-                    new File(walletDir.getPath(), file).delete();
+                    boolean deleted = new File(walletDir.getPath(), file).delete();
+                    if (!deleted) {
+                        System.out.println("Warning: unable to delete "+file);
+                    }
                 }
             }
         }
