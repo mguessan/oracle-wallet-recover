@@ -79,7 +79,8 @@ ant
 
 ### Appveyor build
 You can also grab latest build from Appveyor: [oracle-wallet-recover-1.0.jar](https://ci.appveyor.com/api/projects/mguessan/oracle-wallet-recover/artifacts/target%2Foracle-wallet-recover-1.0.jar?job=Environment%3A%20JAVA_HOME%3DC%3A%5CProgram%20Files%5CJava%5Cjdk1.8.0).
-It does not include Oracle libraries so you still need to get latest Oracle driver, then just the following command instead of java -jar recoverwallet.jar:
+It does not include Oracle libraries so you still need to get latest Oracle driver.
+Put oracle driver jars in a lib folder and use the following command instead of `java -jar recoverwallet.jar` above:
 
 ```
 java -classpath lib/*:oracle-wallet-recover-1.0.jar RecoverWallet path/to/sourcewallet path/to/targetwallet [newPassword]
