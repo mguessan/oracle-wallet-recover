@@ -111,7 +111,21 @@ Put oracle driver jars in a lib folder and use the following command instead of 
 ```
 java -classpath lib/*:oracle-wallet-recover-1.0.jar RecoverWallet path/to/sourcewallet path/to/targetwallet [newPassword]
 ```
- 
+
+### Maven build
+Maven can retrieve Oracle driver automatically with valid Oracle credentials,
+see https://www.oracle.com/webfolder/application/maven/index.html
+
+Call maven with your Oracle credentials:
+```
+mvn package --settings mvnsettings.xml -DOTN_USERNAME=%OTN_USERNAME% -DOTN_PASSWORD=%OTN_PASSWORD%
+``` 
+
+To build a standalone jar, use:
+```
+mvn assembly:single --settings mvnsettings.xml -DOTN_USERNAME=%OTN_USERNAME% -DOTN_PASSWORD=%OTN_PASSWORD%
+``` 
+
 
 ## Manage wallet without mkstore scripts
 * Create wallet:
