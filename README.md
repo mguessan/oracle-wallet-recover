@@ -60,10 +60,36 @@ java -Duser.name=walletuser -jar recoverwallet.jar path/to/sourcewallet path/to/
 ## Workaround
 You can create an Oracle wallet without a SSO key by using orapki without auto_login option instead of mkstore:
 
-`orapki wallet create -wallet mywallet`
+```
+orapki wallet create -wallet mywallet
+```
 
 However, this means you need to provide the wallet password each time you want to use it, 
 which pretty much defeats the initial requirement of scripts and servers: run unattended.
+
+## Example
+Example test case run:
+```
+* Clear wallet if exists
+* Create a new wallet with one credential entry
+java -classpath lib/* OracleSecretStoreTextUI -wrl mywallet -create -createCredential oracleserver:1521 dbuser myv3rys3cre3tp@ss
+Oracle Secret Store Tool : Version 12.2.0.1.0
+Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Enter password:   
+Enter password again:   
+
+* Read password from wallet with wallet password
+java -classpath lib/* OracleSecretStoreTextUI -wrl mywallet -viewEntry oracle.security.client.password1
+Oracle Secret Store Tool : Version 12.2.0.1.0
+Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
+
+oracle.security.client.password1 = myv3rys3cre3tp@ss
+
+* Recover wallet without original wallet password and display entries with clear text passwords
+java -classpath lib/*:oracle-wallet-recover-1.0.jar RecoverWallet mywallet recoveredwallet N3wP@ssw0rd
+oracleserver:1521 dbuser myv3rys3cre3tp@ss
+```
 
 ## Build
 ### Ant build
